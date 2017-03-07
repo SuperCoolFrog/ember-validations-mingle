@@ -1,27 +1,25 @@
 # ember-validations-mingle
 
-This README outlines the details of collaborating on this Ember addon.
+** if you are able to completely use ember-changeset-validations and uninstall ember-validations, this package is not necessary **
 
-## Installation
+`ember-validations-mingle` is a package meant to ease the transition from ember-validation to ember-changeset-validation if you cannot totally convert your project at once.
+  
+Currently this plugin fixes the following issues we encountered:  
+* clashes with ember-validations/messages
 
-* `git clone <repository-url>` this repository
-* `cd ember-validations-mingle`
-* `npm install`
-* `bower install`
 
-## Running
+# Usage
+```js
+// validations/form.js
+import {
+  validatePresence,
+} from 'ember-changeset-validations/validators';
+import mingle from 'ember-validations-mingle';
 
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
+const _validatePresence = mingle(validatePresence);
 
-## Running Tests
-
-* `npm test` (Runs `ember try:each` to test your addon against multiple Ember versions)
-* `ember test`
-* `ember test --server`
-
-## Building
-
-* `ember build`
-
-For more information on using ember-cli, visit [https://ember-cli.com/](https://ember-cli.com/).
+export default {
+  firstName: _validatePresence({ presence: true }),
+  lastName: _validatePresence({ presence: true })
+};
+```
