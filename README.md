@@ -1,6 +1,6 @@
 # ember-validations-mingle
 
-** if you are able to completely use ember-changeset-validations and uninstall ember-validations, this package is not necessary **
+**if you are able to completely use ember-changeset-validations and uninstall ember-validations, this package is not necessary**
 
 `ember-validations-mingle` is a package meant to ease the transition from ember-validation to ember-changeset-validation if you cannot totally convert your project at once.
   
