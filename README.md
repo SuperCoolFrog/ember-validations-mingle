@@ -9,6 +9,8 @@ Currently this plugin fixes the following issues we encountered:
 
 
 # Usage
+
+## You can pass in a single validate function
 ```js
 // validations/form.js
 import {
@@ -23,3 +25,31 @@ export default {
   lastName: _validatePresence({ presence: true })
 };
 ```
+
+## You can also pass in an object of functions
+
+```js
+// validations/form.js
+import {
+  validatePresence,
+  validateLength
+} from 'ember-changeset-validations/validators';
+import mingle from 'ember-validations-mingle';
+
+const mingles = mingle({
+  validatePresence,
+  validateLength
+});
+
+export default {
+  firstName: [
+    mingles.validatePresence({ presence: true }),
+    mingles.validateLength({ min: 1 })
+  ],
+  lastName: [
+    mingles.validatePresence({ presence: true }),
+    mingles.validateLength({ min: 1 })
+  ]
+};
+```
+
